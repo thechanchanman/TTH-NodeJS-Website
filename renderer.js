@@ -20,4 +20,18 @@ function view(templateName, values, response) {
 	response.write(fileContents);
 }
 
+// Function that handles the reading of css files
+function styles(filename, response) {
+	var cssfile = fs.readFileSync(__dirname + "/views/" + filename, {encoding: "utf8"});
+	response.write(cssfile);
+}
+
+// Function that handles the reading of images
+function image(filename, response) {
+	var imagefile = fs.readFileSync(__dirname + "/img/" + filename);
+	response.write(imagefile);
+}
+
 module.exports.view = view;
+module.exports.styles = styles;
+module.exports.image = image;
